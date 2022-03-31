@@ -1,6 +1,7 @@
 import numpy as np; np.random.seed(1)
 import matplotlib.pyplot as plt
 print('hello')
+print("hello2")
 x = (np.logspace(1,10,base=1.8))
 y = np.random.rayleigh(size=(1,len(x)))
 y = y[0]
