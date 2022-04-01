@@ -1,7 +1,6 @@
 import numpy as np; np.random.seed(1)
 import matplotlib.pyplot as plt
-print('hello')
-print("hello2")
+
 x = (np.logspace(1,10,base=1.8))
 y = np.random.rayleigh(size=(1,len(x)))
 y = y[0]
@@ -19,9 +18,16 @@ def onpick(event):
     else:
         x = datax_
         y = datay_
-    event.artist.get_figure().gca().plot(x,y,'.',color="red")
+    
+    datax = np.delete(datax,ind)
+    datay = np.delete(datay,ind)
+    event.artist.get_figure().clear()
+    event.artist.get_figure().gca().plot(datax,datay,'.',picker=5)
+    # event.artist.get_figure().gca().plot(x,y,'.',color="red")  
     event.artist.get_figure().canvas.draw()
-    print(x, y)
+    if len(datax)<5:
+        print(datax)
+        print(datay)
     
 
 fig,ax = plt.subplots()
